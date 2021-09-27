@@ -12,7 +12,7 @@
             x-transition:leave-end="opacity-0"
             class="max-w-sm w-full @if(config('notify.theme') === 'light') bg-white @else bg-gray-800 @endif shadow-lg rounded-lg pointer-events-auto border-l-4 @if(session()->get('notify.type') === 'success') border-green-600 @endif @if(session()->get('notify.type') === 'warning') border-yellow-400 @endif @if(session()->get('notify.type') === 'info') border-blue-600 @endif @if(session()->get('notify.type') === 'error') border-red-600 @endif"
         >
-            <div class="relative rounded-lg shadow-xs overflow-hidden">
+            <div class="relative rounded-lg shadow-xs overflow-hidden" style="z-index: 1">
                 <div class="p-4">
                     <div class="flex items-start">
                         @if(session()->get('notify.type') === 'success')
