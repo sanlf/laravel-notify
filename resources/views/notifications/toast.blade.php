@@ -13,58 +13,47 @@
             class="max-w-sm w-full @if(config('notify.theme') === 'light') bg-white @else bg-gray-800 @endif shadow-lg rounded-lg pointer-events-auto border-l-4 @if(session()->get('notify.type') === 'success') border-green-600 @endif @if(session()->get('notify.type') === 'warning') border-yellow-400 @endif @if(session()->get('notify.type') === 'info') border-blue-600 @endif @if(session()->get('notify.type') === 'error') border-red-600 @endif"
         >
             <div class="relative rounded-lg shadow-xs overflow-hidden">
-                <div class="p-4">
-                    <div class="flex items-start ">
-                        @if(session()->get('notify.type') === 'success')
-                            <div class="inline-flex items-center bg-green-600 p-2 text-white text-sm rounded-full flex-shrink-0">
-                                <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" class="check w-5 h-5">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-                                </svg>
-                            </div>
-                        @endif
-                        @if(session()->get('notify.type') === 'warning')
-                            <div class="inline-flex items-center bg-yellow-400 p-2 text-white text-sm rounded-full flex-shrink-0">
-                                <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" class="exclamation w-5 h-5">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/>
-                                </svg>
-                            </div>
-                        @endif
-                        @if(session()->get('notify.type') === 'info')
-                            <div class="inline-flex items-center bg-blue-600 p-2 text-white text-sm rounded-full flex-shrink-0">
-                                <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" class="exclamation-circle w-5 h-5">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                                </svg>
-                            </div>
-                        @endif
-                        @if(session()->get('notify.type') === 'error')
-                            <div class="inline-flex items-center bg-red-600 p-2 text-white text-sm rounded-full flex-shrink-0">
-                                <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" class="x w-5 h-5">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
-                                </svg>
-                            </div>
+                <div class="p-2">
+                    <div class="flex ">
+                        <div class="flex items-center" >
+                            @if(session()->get('notify.type') === 'success')
+                                <div class="inline-flex items-center bg-green-600 p-2 text-white text-sm rounded-full flex-shrink-0">
+                                    <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" class="check w-5 h-5">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                                    </svg>
+                                </div>
+                            @endif
+                            @if(session()->get('notify.type') === 'warning')
+                                <div class="inline-flex items-center bg-yellow-400 p-2 text-white text-sm rounded-full flex-shrink-0">
+                                    <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" class="exclamation w-5 h-5">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/>
+                                    </svg>
+                                </div>
+                            @endif
+                            @if(session()->get('notify.type') === 'info')
+                                <div class="inline-flex items-center bg-blue-600 p-2 text-white text-sm rounded-full flex-shrink-0">
+                                    <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" class="exclamation-circle w-5 h-5">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                                    </svg>
+                                </div>
+                            @endif
+                            @if(session()->get('notify.type') === 'error')
+                                <div class="inline-flex items-center bg-red-600 p-2 text-white text-sm rounded-full flex-shrink-0">
+                                    <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" class="x w-5 h-5">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                                    </svg>
+                                </div>
 
-                        @endif
+                            @endif
+                        </div>
                         <div class="ml-4 w-0 flex-1">
+                            <p class="text-base leading-5 font-medium capitalize @if(session()->get('notify.type') === 'success') text-green-600 @endif @if(session()->get('notify.type') === 'warning') text-yellow-400 @endif @if(session()->get('notify.type') === 'info') text-blue-600 @endif @if(session()->get('notify.type') === 'error') text-red-600 @endif">
+                                {{ session()->get('notify.title') ?? session()->get('notify.defaultTitle') }}
+                            </p>
 
-                            <div class="row">
-                                <div class="col-md-3">
-                                    <span><img src="{{ url('/favicon.ico') }}" alt="Icono" width="30" height="30"></span>
-                                </div>
-                                <div class="col-md-9">
-                                    <p class="text-base leading-5 font-medium capitalize @if(session()->get('notify.type') === 'success') text-green-600 @endif @if(session()->get('notify.type') === 'warning') text-yellow-400 @endif @if(session()->get('notify.type') === 'info') text-blue-600 @endif @if(session()->get('notify.type') === 'error') text-red-600 @endif">
-                                        {{ session()->get('notify.title') ?? session()->get('notify.defaultTitle') }}
-                                    </p>
-                                </div>
-
-                            </div>
-
-                            <div class="row">
-                                <p class="mt-1 text-sm leading-5 @if(config('notify.theme') === 'light') text-gray-500 @else text-white @endif">
-                                    {{ session()->get('notify.message') }}
-                                </p>
-                            </div>
-
-
+                            <p class="mt-1 text-sm leading-5 @if(config('notify.theme') === 'light') text-gray-500 @else text-white @endif" style="margin-bottom: 4px">
+                                {{ session()->get('notify.message') }}
+                            </p>
                         </div>
                         <div class="ml-4 flex-shrink-0 flex">
                             <button @click="show = false;" class="inline-flex text-gray-400 focus:outline-none focus:text-gray-500 transition ease-in-out duration-150">
