@@ -3,12 +3,27 @@
 use Mckenziearts\Notify\LaravelNotify;
 
 if (! function_exists('notify')) {
-    function notify(string $message = null, string $title = null): LaravelNotify
+    function notify(string $type = 'success', string $message = null, string $title = null): LaravelNotify
     {
         $notify = app('notify');
 
         if (! is_null($message)) {
-            return $notify->success($message, $title);
+            switch($type){
+                case "success":
+                    return $notify->success($message, $title);
+                    break;
+                case "error":
+                    return $notify->error($message, $title);
+                    break;
+                case "warning":
+                    return $notify->warning($message, $title);
+                    break;
+                case "info":
+                    return $notify->info($message, $title);
+                    break;
+                default:
+                    return $notify->success($message, $title);
+            }
         }
 
         return $notify;
