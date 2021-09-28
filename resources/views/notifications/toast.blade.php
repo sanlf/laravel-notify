@@ -52,7 +52,7 @@
                                 </div>
                                 <div class="col-md-9">
                                     <p class="text-base leading-5 font-medium capitalize @if(session()->get('notify.type') === 'success') text-green-600 @endif @if(session()->get('notify.type') === 'warning') text-yellow-400 @endif @if(session()->get('notify.type') === 'info') text-blue-600 @endif @if(session()->get('notify.type') === 'error') text-red-600 @endif">
-                                        {{ session()->get('notify.title') ?? session()->get('notify.type') }}
+                                        {{ session()->get('notify.title') ?? session()->get('notify.defaultTitle') }}
                                     </p>
                                 </div>
 
