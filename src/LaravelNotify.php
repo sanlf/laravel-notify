@@ -187,12 +187,31 @@ class LaravelNotify
      */
     public function flash(string $message, $type = null, $icon = null, string $model = null, string $title = null): void
     {
+        $defaultTitle = '';
+        switch($type){
+            case 'success':
+                $defaultTitle = 'exito';
+                break;
+            case 'error':
+                $defaultTitle = 'error';
+                break;
+            case 'info':
+                $defaultTitle = 'aviso';
+                break;
+            case 'warning':
+                $defaultTitle = 'advertencia';
+                break;
+            default:
+                $defaultTitle = '';
+        }
+
         $notifications = [
-            'message' => $message,
-            'type'    => $type,
-            'icon'    => $icon,
-            'model'   => $model,
-            'title'   => $title,
+            'message'       => $message,
+            'type'          => $type,
+            'icon'          => $icon,
+            'model'         => $model,
+            'title'         => $title,
+            'defaultTitle'  => $defaultTitle,
         ];
 
         $this->session->flash('notify', $notifications);
